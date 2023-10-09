@@ -23,7 +23,7 @@ class Network:
         for i in range(samples):
             output = input_data[i]
             for layer in self.layers:
-                output = layer.forward_propagation(output)
+                output = layer.foward_propagation(output)
             result.append(output)
         return result
     
@@ -46,7 +46,7 @@ class Network:
 
                 #backward propagation
                 error = self.loss_prime(y_train[j], output)
-                for layer in self.layers:
+                for layer in reversed(self.layers):
                     error = layer.backward_propagation(error, learning_rate)
             
             err /= samples
